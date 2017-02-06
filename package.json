@@ -1,0 +1,37 @@
+{
+  "name": "cordova-plugin-register-filetype",
+  "version": "0.0.1",
+  "description": "Cordova Device Plugin",
+  "cordova": {
+    "id": "cordova-plugin-register-filetype",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jperelli/cordova-plugin-register-filetype"
+  },
+  "keywords": [
+    "cordova",
+    "register",
+    "filetype",
+    "association",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "scripts": {
+  },
+  "author": "Julian Perelli (http://jperelli.com.ar/)",
+  "contributors": [
+    "Mauricio Persico"
+  ],
+  "license": "GPL-3.0",
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100"
+      }
+    }
+  }
+}

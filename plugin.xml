@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-register-filetype"
+    version="0.0.1">
+    <name>Register Filetype</name>
+    <description>Cordova Register Filetype Plugin</description>
+    <license>GNU GPL v3</license>
+    <keywords>cordova,filetype,association</keywords>
+    <repo>https://github.com/jperelli/cordova-plugin-register-filetype</repo>
+    <issue>https://github.com/jperelli/cordova-plugin-register-filetype/issues</issue>
+
+    <js-module src="www/registerFileType.js" name="registerFileType">
+        <clobbers target="registerFileType" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="RegisterFileType">
+                <param name="ios-package" value="CDVRegisterFileType"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/CDVRegisterFileType.h" />
+        <source-file src="src/ios/CDVRegisterFileType.m" />
+
+        <framework src="libz.tbd" />
+    </platform>
+
+</plugin>
