@@ -22,6 +22,8 @@
   ],
   "scripts": {
   },
+  "dependencies": {
+  },
   "author": "Julian Perelli (http://jperelli.com.ar/)",
   "contributors": [
     "Mauricio Persico"

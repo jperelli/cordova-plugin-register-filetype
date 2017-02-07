@@ -5,16 +5,22 @@
 #import <Cordova/CDV.h>
 #import "CDVRegisterFileType.h"
 
-@interface CDVRegisterFileType () {}
-@end
 
 @implementation CDVRegisterFileType
 
+- (void)handleOpenURL:(NSNotification*)notification
+{
+    NSURL* url = [notification object];
+    if (url) {
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[url absoluteString]];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackID];
+    }
+}
+
+
 - (void)registerFileType:(CDVInvokedUrlCommand*)command
 {
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"HOLA"];
-
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    self.callbackID = command.callbackId;
 }
 
 @end

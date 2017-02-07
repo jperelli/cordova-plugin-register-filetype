@@ -14,12 +14,56 @@
         <clobbers target="registerFileType" />
     </js-module>
 
+    <!-- dependency id="cordova-plugin-app-event" /-->
+
     <!-- ios -->
     <platform name="ios">
+        <preference name="EXTENSION" />
+        <preference name="MIMETYPE" />
+
         <config-file target="config.xml" parent="/*">
             <feature name="RegisterFileType">
                 <param name="ios-package" value="CDVRegisterFileType"/>
+                <param name="onload" value="true"/>
             </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="UTExportedTypeDeclarations">
+            <array>
+                <dict>
+                    <key>CFBundleTypeIconFiles</key>
+                    <array>
+                    </array>
+                    <key>UTTypeDescription</key>
+                    <string>$PACKAGE_NAME File</string>
+                    <key>UTTypeIdentifier</key>
+                    <string>$PACKAGE_NAME.$EXTENSION</string>
+                    <key>UTTypeTagSpecification</key>
+                    <dict>
+                        <key>public.filename-extension</key>
+                        <string>$EXTENSION</string>
+                        <key>public.mime-type</key>
+                        <string>$MIMETYPE</string>
+                    </dict>
+                </dict>
+            </array>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleDocumentTypes">
+            <array>
+                <dict>
+                    <key>CFBundleTypeName</key>
+                    <string>$PACKAGE_NAME File</string>
+                    <key>CFBundleTypeRole</key>
+                    <string>Viewer</string>
+                    <key>LSHandlerRank</key>
+                    <string>Owner</string>
+                    <key>LSItemContentTypes</key>
+                    <array>
+                        <string>$PACKAGE_NAME.$EXTENSION</string>
+                    </array>
+                </dict>
+            </array>
         </config-file>
 
         <header-file src="src/ios/CDVRegisterFileType.h" />
