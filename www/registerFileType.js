@@ -7,9 +7,25 @@ var argscheck = require('cordova/argscheck'),
 function RegisterFileType() {
 }
 
+function registerCB(cb1,cb2) {
+  exec(
+    function(url){
+      cb1(url);
+      registerCB(cb1,cb2)
+    },
+    function(err){
+      cb2(err);
+      registerCB(cb1,cb2)
+    },
+    "RegisterFileType",
+    "registerFileType",
+    []
+  );
+}
+
 RegisterFileType.prototype.registerFileType = function(successCallback, errorCallback) {
-    argscheck.checkArgs('fF', 'RegisterFileType.registerFileType', arguments);
-    exec(successCallback, errorCallback, "RegisterFileType", "registerFileType", []);
+  argscheck.checkArgs('fF', 'RegisterFileType.registerFileType', arguments);
+  registerCB(successCallback, errorCallback);
 };
 
 module.exports = new RegisterFileType();
